@@ -3,8 +3,9 @@
 html {
   --clips-black: #222831;
   --clips-gray: #393E46;
-  --clips-blue: #00ADB5;
+  --clips-orange: #D65A31;
   --clips-white: #EEEEEE;
+  box-sizing: border-box;
 }
 
 body{
@@ -31,4 +32,8 @@ ul {
 
 fa-icon{
   margin-right: 0.25rem;
+}
+
+.orange-span{
+  color: var(--clips-orange);
 }

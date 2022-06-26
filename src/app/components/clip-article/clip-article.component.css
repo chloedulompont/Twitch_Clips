@@ -1,0 +1,25 @@
+article.clip{
+  background-color: var(--clips-gray);
+  color: var(--clips-white)
+}
+.clip-screenshot{
+  height: 90%;
+}
+.clip-screenshot img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.clip-data > h3 {
+  margin: 0.33rem;
+  text-align: center;
+}
+
+.clip-details{
+  display: flex;
+  align-items: center;
+}
+
+.clip-details > h4 {
+  margin: 0.5rem 1rem;
+}

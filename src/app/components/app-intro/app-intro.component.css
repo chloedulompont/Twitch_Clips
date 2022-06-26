@@ -1,0 +1,14 @@
+.introduction{
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid var(--clips-black);
+  border-radius: 1rem;
+  text-align: center;
+  background-color: var(--clips-black);
+  box-shadow: 1px 1px 5px var(--clips-black);
+  color: var(--clips-white)
+}
+
+.introduction h2{
+  margin-top: 0;
+}

@@ -1,0 +1,13 @@
+.home-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+app-app-intro{
+  width: 66%;
+}
+
+app-sample-clips{
+  width: 90%;
+}

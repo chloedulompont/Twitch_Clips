@@ -1,0 +1,8 @@
+<section class="sample-clips">
+  <h2>Sample Clips</h2>
+  <div class="clips">
+    <ng-container *ngFor="let clip of sampleClips">
+      <app-clip-article [title]="clip.title" [author]="clip.author" [date]="clip.date"></app-clip-article>
+    </ng-container>
+  </div>
+</section>
