@@ -1,0 +1,47 @@
+<nav>
+  <div class="left-side">
+
+    <ul>
+      <ng-container *ngIf="isConnected">
+        <li>
+          <a href="/manage">
+            <fa-icon [icon]="fafileLines"></fa-icon>
+            Manage
+          </a>
+        </li>
+        <li>
+          <a href="/upload">
+            <fa-icon [icon]="faUpload"></fa-icon>
+            Upload
+          </a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="!isConnected">
+        <li>
+          <a href="/search">
+            <fa-icon [icon]="faSearch"></fa-icon>
+            Search
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  <div class="right-side">
+    <ul>
+      <li>
+        <a href="#" (click)="logout($event)" *ngIf="isConnected">
+          <fa-icon [icon]="faRightFromBracket"></fa-icon>
+          Logout
+        </a>
+        <a href="#" (click)="openModal($event)" *ngIf="!isConnected">
+          <fa-icon [icon]="faRightToBracket"></fa-icon>
+          Login/Register
+        </a>
+      </li>
+    </ul>
+    <div class="separation"></div>
+    <a href="/">
+      <h1>{{appTitle}}</h1>
+    </a>
+  </div>
+</nav>

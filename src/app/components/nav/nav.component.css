@@ -1,0 +1,42 @@
+nav{
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--clips-black);
+  color: var(--clips-white);
+}
+
+h1{
+  margin-left: 0.5rem;
+}
+
+ul{
+  align-items: center;
+}
+
+li{
+  margin: 0.5rem;
+}
+
+.left-side{
+  max-width: 33%;
+}
+
+.left-side > ul{
+  justify-content: flex-start;
+}
+
+.right-side{
+  max-width: 33%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.separation{
+  margin: 0 1rem;
+  height: 1.5rem;
+  border-right: 1px solid var(--clips-white);
+}
+
