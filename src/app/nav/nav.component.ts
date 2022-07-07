@@ -8,6 +8,7 @@ import {
   faFileLines,
   IconDefinition
 } from "@fortawesome/free-solid-svg-icons";
+import {ModalService} from "../services/modal.service";
 
 
 @Component({
@@ -28,14 +29,16 @@ export class NavComponent implements OnInit {
   public faRightFromBracket: IconDefinition = faRightFromBracket;
   public fafileLines: IconDefinition = faFileLines;
 
-  constructor() { }
+  constructor(
+    private modalService: ModalService
+  ) { }
 
   ngOnInit(): void {
   }
 
   openModal(event: Event): void{
     event.preventDefault();
-    return;
+    this.modalService.toggleModal('authenticationModal');
   }
 
   logout(event: Event): void{

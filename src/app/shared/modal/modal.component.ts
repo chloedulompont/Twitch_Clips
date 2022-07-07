@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {ModalService} from "./service/modal.service";
+import {Component, OnInit, OnDestroy, Input, ElementRef} from '@angular/core';
+import {ModalService} from "../../services/modal.service";
 import {
   IconDefinition,
   faXmark
@@ -11,33 +11,27 @@ import {
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
-export class ModalComponent implements OnInit {
-  @Input()
-  modalId !: string;
-
-  private opened: boolean = false;
-
-  public closeIcon: IconDefinition = faXmark
+export class ModalComponent implements OnInit, OnDestroy {
+  @Input() modalId: string = '';
+  public closeIcon: IconDefinition = faXmark;
 
   constructor(
-    private modalService: ModalService
+    public modalService: ModalService,
+    public el:ElementRef
   ) { }
 
   ngOnInit(): void {
-  }
-
-  public isOpen(): boolean{
-    return this.opened
-  }
-
-  open(): void{
-    this.modalService.openModal(this.modalId);
-    this.opened = true;
+    document.body.appendChild(this.el.nativeElement);
   }
 
   close(): void{
-    this.modalService.closeModal(this.modalId);
-    this.opened = false;
+    this.modalService.toggleModal(this.modalId)
   }
+
+
+  ngOnDestroy(): void {
+    document.body.removeChild(this.el.nativeElement);
+  }
+
 
 }

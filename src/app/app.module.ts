@@ -10,6 +10,8 @@ import { AppIntroComponent } from './app-intro/app-intro.component';
 import { ClipArticleComponent } from './clip-article/clip-article.component';
 import { SampleClipsComponent } from './sample-clips/sample-clips.component';
 import { SharedModule } from "./shared/shared.module";
+import { ModalService } from "./services/modal.service";
+import {UserModule} from "./user/user.module";
 
 @NgModule({
   declarations: [
@@ -24,9 +26,12 @@ import { SharedModule } from "./shared/shared.module";
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    SharedModule
+    SharedModule,
+    UserModule
   ],
-  providers: [],
+  providers: [
+    ModalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
