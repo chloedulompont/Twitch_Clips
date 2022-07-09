@@ -3,10 +3,23 @@ module.exports = {
   content: [
     "./src/**/*.{html,ts}",
   ],
-  safelist: [],
+  safelist: [
+    'bg-blue-400',
+    'bg-red-400',
+    'bg-green-400'
+  ],
   theme: {
     colors: {
       'white': '#EEEEEE',
+      'blue': {
+        400: '#60A5FA'
+      },
+      'green': {
+        400: '#4ADE80'
+      },
+      'red': {
+        400: '#F87171'
+      },
       'black': '#222831',
       'orange': '#D65A31',
       'gray': {

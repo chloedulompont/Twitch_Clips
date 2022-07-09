@@ -9,6 +9,10 @@ import {ModalService} from "../../services/modal.service";
 export class AuthModalComponent implements OnInit, OnDestroy {
   public modalId: string = 'authenticationModal';
 
+  public readonly LOGIN_FORM_NAME: string = 'loginForm';
+  public readonly SIGN_IN_FORM_NAME: string = 'signInForm';
+  public selectedForm: string = this.LOGIN_FORM_NAME;
+
   constructor(
     public modalService: ModalService
   ) { }
@@ -19,5 +23,13 @@ export class AuthModalComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.modalService.unregister(this.modalId);
+  }
+
+  public isSelected(formName: string): boolean{
+    return this.selectedForm === formName;
+  }
+
+  public selectForm(formName: string): void{
+    this.selectedForm = formName;
   }
 }

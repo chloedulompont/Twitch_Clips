@@ -3,14 +3,29 @@
     <h2 class="px-4 font-bold text-xl">Authentication Form</h2>
   </div>
   <div class="py-1 px-3 flex justify-around">
-    <button class="w-3/5 p-2 bg-white text-black border rounded-lg">Login</button>
-    <button class="w-3/5 p-2 rounded-lg hover:border">Register</button>
+    <button
+      class="w-3/5 p-2 rounded-lg font-bold"
+      [ngClass]="{
+        'text-black': isSelected(LOGIN_FORM_NAME),
+        'border': isSelected(LOGIN_FORM_NAME),
+        'hover:border': !isSelected(LOGIN_FORM_NAME),
+        'bg-white': isSelected(LOGIN_FORM_NAME)
+      }"
+      (click)="selectForm(LOGIN_FORM_NAME)"
+    >Login</button>
+    <button
+      class="w-3/5 p-2 rounded-lg font-bold"
+      [ngClass]="{
+        'text-black': isSelected(SIGN_IN_FORM_NAME),
+        'border': isSelected(SIGN_IN_FORM_NAME),
+        'hover:border': !isSelected(SIGN_IN_FORM_NAME),
+        'bg-white': isSelected(SIGN_IN_FORM_NAME)
+      }"
+      (click)="selectForm(SIGN_IN_FORM_NAME)">Register</button>
   </div>
   <div>
-    <form class="flex flex-col p-6 m-4 border border-gray-100">
-      <input class="m-2 p-1 text-black" type="text" placeholder="email">
-      <input class="m-2 p-1 text-black" type="text" placeholder="password">
-      <input class="w-1/2 p-2 cursor-pointer mx-auto my-3 text-center text-orange border-2 border-orange hover:text-black hover:bg-orange" type="button" value="Log in">
-    </form>
+    <app-login-form *ngIf="isSelected(LOGIN_FORM_NAME)"></app-login-form>
+    <app-signin-form *ngIf="isSelected(SIGN_IN_FORM_NAME)"></app-signin-form>
   </div>
+
 </app-modal>

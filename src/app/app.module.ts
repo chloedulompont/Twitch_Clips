@@ -12,6 +12,7 @@ import { SampleClipsComponent } from './sample-clips/sample-clips.component';
 import { SharedModule } from "./shared/shared.module";
 import { ModalService } from "./services/modal.service";
 import {UserModule} from "./user/user.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {UserModule} from "./user/user.module";
     AppRoutingModule,
     FontAwesomeModule,
     SharedModule,
-    UserModule
+    UserModule,
+    ReactiveFormsModule
   ],
   providers: [
     ModalService

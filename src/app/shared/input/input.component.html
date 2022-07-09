@@ -1,0 +1,8 @@
+<div class="flex flex-col">
+  <input class="m-2 p-1 text-black" [type]="inputType" [formControl]="control" [placeholder]="placeholder">
+  <ng-container *ngIf="control.touched && control.dirty">
+    <span class="text-red-400" *ngIf="control.getError('required')">This field is required.</span>
+    <span class="text-red-400" *ngIf="control.getError('email')">You have to provide a correct email.</span>
+    <span class="text-red-400" *ngIf="control.getError('pattern')">Password must be at least 8 characters long, have 1 uppercase letter, 1 lowercase letter, and 1 number.</span>
+  </ng-container>
+</div>
