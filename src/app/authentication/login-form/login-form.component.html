@@ -1,6 +1,6 @@
 <app-alert [alertColor]="alertColor" [alertMsg]="alertMsg" *ngIf="showAlert"></app-alert>
 <form [formGroup]="loginForm" class="flex flex-col p-6 m-4 border border-gray-100" (ngSubmit)="login()" role="form">
   <app-input [control]="email" placeholder="Email"></app-input>
-  <app-input [control]="password" placeholder="Password"></app-input>
+  <app-input [control]="password" placeholder="Password" inputType="password"></app-input>
   <button class="w-1/2 p-2 cursor-pointer mx-auto my-3 text-center text-orange border-2 border-orange hover:text-black hover:bg-orange" [disabled]="!loginForm.valid" type="submit">Log in</button>
 </form>

@@ -1,1 +1,9 @@
-<p>signin-form works!</p>
+<app-alert [alertColor]="alertColor" [alertMsg]="alertMsg" *ngIf="showAlert"></app-alert>
+<form class="flex flex-col p-6 m-4 border border-gray-100" [formGroup]="signInForm" (ngSubmit)="register()">
+  <app-input placeholder="Username" [control]="username"></app-input>
+  <app-input placeholder="Email" [control]="email"></app-input>
+  <app-input placeholder="Age" [control]="age" inputType="number"></app-input>
+  <app-input placeholder="Password" [control]="password" inputType="password"></app-input>
+  <app-input placeholder="Confirm Password" [control]="confirmPassword" inputType="password"></app-input>
+  <button class="w-1/2 p-2 cursor-pointer mx-auto my-3 text-center text-orange border-2 border-orange hover:text-black hover:bg-orange" [disabled]="!signInForm.valid" type="submit">Sign in</button>
+</form>
