@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {EmailMatchValidator} from "../validators/email-match-validator";
-import {AuthenticationService} from "../service/authentication.service";
+import {AuthenticationService} from "../services/authentication.service";
 import Error from "../../models/error";
 import User from "../../models/user";
 @Component({
