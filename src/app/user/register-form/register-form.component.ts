@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {EmailMatchValidator} from "../validators/email-match-validator";
+import {PasswordMatchValidator} from "../validators/password-match-validator";
 import {AuthenticationService} from "../services/authentication.service";
 import Error from "../../models/error";
-import User from "../../models/user";
+
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
@@ -45,7 +45,7 @@ export class RegisterFormComponent implements OnInit {
     age: this.age,
     password: this.password,
     confirmPassword: this.confirmPassword
-  }, [EmailMatchValidator.match('password', 'confirmPassword')]);
+  }, [PasswordMatchValidator.match('password', 'confirmPassword')]);
 
   constructor(
     private authService: AuthenticationService
