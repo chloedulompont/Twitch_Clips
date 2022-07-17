@@ -11,8 +11,9 @@ import { ClipArticleComponent } from './clip-article/clip-article.component';
 import { SampleClipsComponent } from './sample-clips/sample-clips.component';
 import { SharedModule } from "./shared/shared.module";
 import { ModalService } from "./services/modal.service";
-import {UserModule} from "./user/user.module";
-import {ReactiveFormsModule} from "@angular/forms";
+import { UserModule } from "./user/user.module";
+import { ReactiveFormsModule } from "@angular/forms";
+import { LocalstorageService } from "./services/localstorage.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule
   ],
   providers: [
-    ModalService
+    ModalService,
+    LocalstorageService
   ],
   bootstrap: [AppComponent]
 })
