@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from "@angular/forms";
+import {AuthenticationService} from "../service/authentication.service";
 
 @Component({
   selector: 'app-login-form',
@@ -9,21 +10,31 @@ import { FormControl, Validators, FormGroup } from "@angular/forms";
 export class LoginFormComponent implements OnInit {
   private readonly PROCESSING_MESSAGE: string = 'Processing your request...';
   private readonly ERROR_MESSAGE: string = 'An error has occurred, please try again later.';
-  private readonly SUCCESS_MESSAGE: string = 'Successfully logged in!'
+  private readonly SUCCESS_MESSAGE: string = 'Successfully logged in!';
+
+  private readonly PASSWORD_PATTERN: RegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
 
   public showAlert: boolean = false;
   public alertMsg: string = this.PROCESSING_MESSAGE;
   public alertColor: string = 'blue';
 
-  public email = new FormControl<string>('', [Validators.required, Validators.email]);
-  public password = new FormControl<string>('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)]);
+  public email = new FormControl<string>('', {
+    validators: [Validators.required, Validators.email],
+    nonNullable: true
+});
+  public password = new FormControl<string>('', {
+    validators: [Validators.required, Validators.pattern(this.PASSWORD_PATTERN)],
+    nonNullable: true
+});
 
   public loginForm = new FormGroup({
     email: this.email,
     password: this.password
   });
 
-  constructor() {}
+  constructor(
+    private authService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
   }
@@ -33,13 +44,20 @@ export class LoginFormComponent implements OnInit {
     this.alertMsg = this.PROCESSING_MESSAGE;
     this.alertColor = "blue"
 
-    window.setTimeout(() => {
-      this.alertMsg = this.SUCCESS_MESSAGE;
-      this.alertColor = 'green';
+    const observer = {
+      next: (jwt: Object) => {
+        this.alertMsg = this.SUCCESS_MESSAGE;
+        this.alertColor = 'green';
 
-      window.setTimeout(() => {
-        this.showAlert = false;
-      }, 2000);
-    }, 3000);
+
+      },
+      error: (error: Error) => {
+        this.alertMsg = this.ERROR_MESSAGE;
+        this.alertColor = 'red';
+      }
+    }
+
+    this.authService.loginWithEmailAndPassword(this.email.value, this.password.value).subscribe(observer)
+
   }
 }

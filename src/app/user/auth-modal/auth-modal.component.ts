@@ -10,7 +10,7 @@ export class AuthModalComponent implements OnInit, OnDestroy {
   public modalId: string = 'authenticationModal';
 
   public readonly LOGIN_FORM_NAME: string = 'loginForm';
-  public readonly SIGN_IN_FORM_NAME: string = 'signInForm';
+  public readonly SIGN_IN_FORM_NAME: string = 'registerForm';
   public selectedForm: string = this.LOGIN_FORM_NAME;
 
   constructor(

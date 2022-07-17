@@ -1,24 +1,30 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LoginFormComponent} from './login-form/login-form.component';
-import {SigninFormComponent} from './signin-form/signin-form.component';
+import {RegisterFormComponent} from './register-form/register-form.component';
 import {SharedModule} from "../shared/shared.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {AuthenticationService} from "./service/authentication.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
   declarations: [
     LoginFormComponent,
-    SigninFormComponent
+    RegisterFormComponent
   ],
   exports: [
     LoginFormComponent,
-    SigninFormComponent
+    RegisterFormComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    AuthenticationService
   ]
 })
 export class AuthenticationModule {

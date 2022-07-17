@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  title: 'Twitch Clips'
+  title: 'Twitch Clips',
+  DB_API_URL: 'http://localhost:8000'
 };
 
 /*
