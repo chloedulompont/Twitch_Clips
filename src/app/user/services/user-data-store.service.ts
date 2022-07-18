@@ -22,7 +22,7 @@ export class UserDataStoreService {
   /**
    * Retrieves the user data JSON web token from the localStorage
    */
-  public getUserDataToken(): Object{
+  public getUserDataToken(): string{
     return this.localStorageService.getItemFromLocalStorage(this.USER_DATA_KEY);
   }
 

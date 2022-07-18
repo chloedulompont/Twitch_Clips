@@ -14,6 +14,8 @@ import { ModalService } from "./services/modal.service";
 import { UserModule } from "./user/user.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { LocalstorageService } from "./services/localstorage.service";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {JwtInterceptorService} from "./user/interceptor/jwt-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,12 @@ import { LocalstorageService } from "./services/localstorage.service";
   ],
   providers: [
     ModalService,
-    LocalstorageService
+    LocalstorageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

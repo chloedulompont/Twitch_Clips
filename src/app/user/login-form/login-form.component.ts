@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from "@angular/forms";
 import {AuthenticationService} from "../services/authentication.service";
+import {UserDataStoreService} from "../services/user-data-store.service";
 
 @Component({
   selector: 'app-login-form',
@@ -33,7 +34,8 @@ export class LoginFormComponent implements OnInit {
   });
 
   constructor(
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private userDataStore: UserDataStoreService
   ) {}
 
   ngOnInit(): void {
@@ -45,11 +47,13 @@ export class LoginFormComponent implements OnInit {
     this.alertColor = "blue"
 
     const observer = {
-      next: (jwt: Object) => {
+      next: (response: any) => {
         this.alertMsg = this.SUCCESS_MESSAGE;
         this.alertColor = 'green';
 
+        const jwtToken = response.jwt;
 
+        this.userDataStore.setUserDataToken(jwtToken);
       },
       error: (error: Error) => {
         this.alertMsg = this.ERROR_MESSAGE;
