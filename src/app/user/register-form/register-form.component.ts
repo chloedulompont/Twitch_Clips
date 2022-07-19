@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PasswordMatchValidator} from "../validators/password-match-validator";
 import {AuthenticationService} from "../services/authentication.service";
 import Error from "../../models/error";
+import {UserDataStoreService} from "../services/user-data-store.service";
 
 @Component({
   selector: 'app-register-form',
@@ -48,21 +49,23 @@ export class RegisterFormComponent implements OnInit {
   }, [PasswordMatchValidator.match('password', 'confirmPassword')]);
 
   constructor(
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private userDataStoreService: UserDataStoreService
   ) {}
 
   ngOnInit(): void {
   }
 
 
-  public register(){
+  public register(): void{
     this.alertMsg = this.PROCESSING_SIGNIN;
     this.alertColor = 'blue';
     this.showAlert = true;
 
     const observer = {
-      next: (result: Object) => {
-        console.log(result);
+      next: (response: any) => {
+        const userJWT: string = response.jwt;
+        this.userDataStoreService.setUserDataToken(userJWT)
         this.alertMsg = this.SUCCESSFUL_MESSAGE;
         this.alertColor = 'green';
       },
